@@ -11,10 +11,10 @@ public class AssistantDbContext:DbContext
     ,ILogger<AssistantDbContext> logger) : base(options)
     {
         _logger = logger;
-        logger.LogInformation("db has been init");
+        logger.LogInformation("db has been initialized");
     }
-    
-    public DbSet<ChanifyChannel> ChanifyChannels { get; set; }
+
+    public DbSet<ChanifyChannel> ChanifyChannels => Set<ChanifyChannel>();
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // optionsBuilder.UseSqlite("Data Source=db/assistant.db");
