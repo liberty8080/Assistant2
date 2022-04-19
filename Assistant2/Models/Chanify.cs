@@ -1,12 +1,16 @@
 namespace Assistant2.Models;
 
+public enum ChanifyChannelType
+{
+    Default,Magic
+}
 public class ChanifyChannel
 {
     public int Id { get; set; }
     public string? Address { get; set; }
     public string? Token { get; set; }
     public string? Comment { get; set; }
-    public string? Type { get; set; }
+    public ChanifyChannelType Type { get; set; }
 }
 
 

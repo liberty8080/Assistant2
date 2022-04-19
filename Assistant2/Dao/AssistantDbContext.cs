@@ -22,6 +22,7 @@ public class AssistantDbContext:DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ChanifyChannel>().ToTable("chanify_channel");
+        modelBuilder.Entity<ChanifyChannel>().ToTable("chanify_channel")
+            .Property(e=>e.Type).HasConversion<string>();
     }
 }

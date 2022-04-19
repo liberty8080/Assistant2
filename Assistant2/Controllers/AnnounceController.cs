@@ -9,19 +9,16 @@ namespace Assistant2.Controllers;
 public class AnnounceController
 {
     private readonly IAnnounceService _service;
-    private readonly AssistantDbContext _context;
     private readonly ILogger<AnnounceController> _logger;
 
     public AnnounceController(IAnnounceService service,
-        AssistantDbContext context,
         ILogger<AnnounceController> logger)
     {
         _service = service;
-        _context = context;
         _logger = logger;
     }
-    [HttpGet]
-    public void Send()
+    [HttpGet("send")]
+    public void Send(string msg)
     {
         _service.SendDefault("test");
     }
