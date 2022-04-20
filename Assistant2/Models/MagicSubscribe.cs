@@ -2,7 +2,7 @@ namespace Assistant2.Models;
 
 public enum MagicSubscribeType
 {
-    Songuo,StarDream
+    V2,Clash,Rocket
 }
 
 public class MagicSubscribe
@@ -13,5 +13,8 @@ public class MagicSubscribe
     public string BandwidthLeft { get; set; }
     public MagicSubscribeType Type { get; set; }
     public string Data { get; set; }
+    public string Site { get; set; }
+    public bool AutoUpdate { get; set; }
+    public int UpdateInterval { get; set; } // Hour
     public string Comment { get; set; }
 }

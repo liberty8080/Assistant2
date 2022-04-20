@@ -15,6 +15,7 @@ public class AssistantDbContext:DbContext
     }
 
     public DbSet<ChanifyChannel> ChanifyChannels => Set<ChanifyChannel>();
+    public DbSet<MagicSubscribe> MagicSubscribes => Set<MagicSubscribe>();
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // optionsBuilder.UseSqlite("Data Source=db/assistant.db");
@@ -24,5 +25,7 @@ public class AssistantDbContext:DbContext
     {
         modelBuilder.Entity<ChanifyChannel>().ToTable("chanify_channel")
             .Property(e=>e.Type).HasConversion<string>();
+        modelBuilder.Entity<MagicSubscribe>().ToTable("magic_subscribe")
+            .Property(e => e.Type).HasConversion<string>();
     }
 }
