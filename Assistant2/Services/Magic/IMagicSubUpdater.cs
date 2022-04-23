@@ -1,3 +1,4 @@
+using Assistant2.Exceptions;
 using Assistant2.Models;
 
 namespace Assistant2.Services.Magic;
@@ -7,19 +8,21 @@ public interface IMagicSubUpdater
     public void Update(ref MagicSubscribe subscribe);
 }
 
-public class MagicSubUpdaterFactory
+public static class MagicSubUpdaterFactory
 {
-    public IMagicSubUpdater Updater { get; set; }
-
-    public MagicSubUpdaterFactory(MagicSubscribeType type)
+    public static IMagicSubUpdater Updater(MagicSubscribeType type)
     {
-        Updater = type switch
+        return type switch
         {
-            MagicSubscribeType.V2 => new V2Updater(),
-            MagicSubscribeType.Rocket => new RocketUpdater(),
-            MagicSubscribeType.Clash => new ClashUpdater(),
-            _ => throw new Exception("")
+            MagicSubscribeType.Songuo => new SonguoUpdater(),
+            MagicSubscribeType.StarDream => new RocketUpdater(),
+            _ => throw new MagicException("this subscribe type not supported")
         };
+    }
+
+    public static IMagicSubUpdater Updater(MagicSubscribe subscribe)
+    {
+        return Updater(subscribe.Type);
     }
 
 }

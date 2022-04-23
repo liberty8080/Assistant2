@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assistant2", "Assistant2\Assistant2.csproj", "{79A9AB65-03A2-4DDE-BE84-0A44E86CC857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assistant2.Test", "Assistant2.Test\Assistant2.Test.csproj", "{51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
