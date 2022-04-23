@@ -15,11 +15,11 @@ public class SonguoUpdater : IMagicSubUpdater
         var client = new HttpClient();
         var res =  client.GetAsync(subscribe.Url).Result
             .Content.ReadAsStringAsync().Result;
+        subscribe.Data = res;
         // raw data
-        
-        var data = GetSubData(res);
-        var bandwidthLeft = DecodeV2Data(data[0]);
-        var expireTime = DecodeV2Data(data[1]);
+        var subData = GetSubData(res);
+        var bandwidthLeft = DecodeV2Data(subData[0]);
+        var expireTime = DecodeV2Data(subData[1]);
 
         if (bandwidthLeft.remark != "")
         {
