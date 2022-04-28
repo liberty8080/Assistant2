@@ -24,6 +24,11 @@ public class ChanifyService : IAnnounceService
     {
         var channel = _context.ChanifyChannels
             .Where(e => e.Id == 1).ToList();
+        if (!channel.Any())
+        {
+            _logger.LogWarning("unable to send chanify,no default server");
+            return;
+        }
         foreach (var c in channel)
         {
             Send(c,text);
@@ -34,7 +39,11 @@ public class ChanifyService : IAnnounceService
     {
         var channel = _context.ChanifyChannels
             .Where(e => e.Type == ChanifyChannelType.Magic).ToList();
-        
+        if (!channel.Any())
+        {
+            _logger.LogWarning("unable to send chanify,no magic server");
+            return;
+        }
         foreach (var c in channel)
         {
             Send(c,text,title,sound:sound);

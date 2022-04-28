@@ -24,8 +24,15 @@ public class MagicSubUpdateJob : IJob
     {
         return Task.Run(() =>
         {
+            _logger.LogInformation("start to update subscribe");
             var subscribes = _service.Subscribes();
-            foreach (var s in subscribes)
+            var magicSubscribes = subscribes.ToList();
+            if (!magicSubscribes.Any())
+            {
+                _announce.SendMagic("更新失败，未添加订阅链接","",1);
+                return;
+            }
+            foreach (var s in magicSubscribes)
             {
                 try
                 {

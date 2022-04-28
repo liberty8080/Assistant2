@@ -1,7 +1,7 @@
 using Assistant2.Dao;
+using Assistant2.Schedule;
 using Assistant2.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AssistantDbContext>(
     options=>options.UseSqlite("Data Source=assistant.db"));
 builder.Services.AddScoped<IAnnounceService, ChanifyService>();
+// 定时任务
+builder.Services.AddMagicScheduleJob();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -25,7 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-
+// 迁移配置
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
