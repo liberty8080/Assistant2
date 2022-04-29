@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assistant2.Migrations
 {
     [DbContext(typeof(AssistantDbContext))]
-    [Migration("20220410035645_TestChange")]
-    partial class TestChange
+    [Migration("20220410032001_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
 
-            modelBuilder.Entity("Assistant2.Models.ChanifyChannel", b =>
+            modelBuilder.Entity("Assistant2.server.Models.ChanifyChannel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,6 +29,7 @@ namespace Assistant2.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Comment")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Port")

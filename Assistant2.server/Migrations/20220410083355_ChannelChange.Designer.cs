@@ -18,7 +18,7 @@ namespace Assistant2.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
 
-            modelBuilder.Entity("Assistant2.Models.ChanifyChannel", b =>
+            modelBuilder.Entity("Assistant2.server.Models.ChanifyChannel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
