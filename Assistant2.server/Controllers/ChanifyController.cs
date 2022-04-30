@@ -23,7 +23,7 @@ public class ChanifyController
         return _service.ChannelsAll();
     }
 
-    [HttpPost]
+    [HttpPost("getbytype")]
     public IEnumerable<ChanifyChannel> GetByType(ChanifyChannelType type)
     {
         try
@@ -32,7 +32,7 @@ public class ChanifyController
         }
         catch (Exception e)
         {
-            _logger.LogError("chanify 查询失败！",e.Message);
+            _logger.LogError("chanify 查询失败！cause:{Msg}",e.Message);
             return new List<ChanifyChannel>();
         }
     }
