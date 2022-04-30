@@ -12,6 +12,10 @@ public class MagicSubscribeService
         _context = context;
     }
 
+    /// <summary>
+    /// 拉取订阅信息
+    /// </summary>
+    /// <param name="id"></param>
     public void UpdateById(int id)
     {
         var sub = _context.MagicSubscribes
@@ -25,8 +29,14 @@ public class MagicSubscribeService
     {
         return _context.MagicSubscribes.ToArray();
     }
-    public void AddSubByUrl(string url, MagicSubscribeType type, string comment)
+
+    public void Edit(MagicSubscribe subscribe)
     {
-        
+        _context.Update(subscribe);
+    }
+
+    public void Remove(MagicSubscribe subscribe)
+    {
+        _context.Remove(subscribe);
     }
 }

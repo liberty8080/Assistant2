@@ -22,4 +22,6 @@ public class AnnounceController
     {
         _service.SendDefault("test");
     }
-}
+
+
+ }

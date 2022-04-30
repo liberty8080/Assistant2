@@ -1,4 +1,5 @@
 using Assistant2.Dao;
+using Assistant2.Models;
 using Assistant2.Schedule;
 using Assistant2.Services;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AssistantDbContext>(
     options=>options.UseSqlite("Data Source=assistant.db"));
 builder.Services.AddScoped<IAnnounceService, ChanifyService>();
+builder.Services.AddScoped<ChanifyService>();
 // 定时任务
 builder.Services.AddMagicScheduleJob();
 

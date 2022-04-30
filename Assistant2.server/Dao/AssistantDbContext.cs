@@ -19,6 +19,7 @@ public class AssistantDbContext:DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // optionsBuilder.UseSqlite("Data Source=db/assistant.db");
+        _logger.LogInformation("context on configuring");
     }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
