@@ -24,16 +24,16 @@ public class ChanifyController
     }
 
     [HttpPost("getbytype")]
-    public IEnumerable<ChanifyChannel> GetByType(ChanifyChannelType type)
+    public ApiResult GetByType(ChanifyChannelType type)
     {
         try
         {
-            return _service.Channels(type);
+            return ApiResult.Success(_service.Channels(type));
         }
         catch (Exception e)
         {
             _logger.LogError("chanify 查询失败！cause:{Msg}",e.Message);
-            return new List<ChanifyChannel>();
+            return ApiResult.Success(null);
         }
     }
 
