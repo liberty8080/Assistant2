@@ -18,9 +18,9 @@ public class MagicController
     }
     
     [HttpGet("all")]
-    public IEnumerable<MagicSubscribe> All()
+    public ApiResult All()
     {
-        return _service.Subscribes();
+        return ApiResult.Success(_service.Subscribes());
     }
 
     [HttpGet("update")]

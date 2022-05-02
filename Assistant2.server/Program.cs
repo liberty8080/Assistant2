@@ -12,6 +12,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "Policy2",
+        corsPolicyBuilder =>
+        {
+            corsPolicyBuilder
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddDbContext<AssistantDbContext>(
     options=>options.UseSqlite("Data Source=assistant.db"));
 builder.Services.AddScoped<IAnnounceService, ChanifyService>();
@@ -21,12 +33,13 @@ builder.Services.AddMagicScheduleJob();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
+app.UseCors("Policy2");
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 // 迁移配置
