@@ -16,6 +16,7 @@ public static class MagicSubUpdaterFactory
         {
             MagicSubscribeType.Songuo => new SonguoUpdater(),
             MagicSubscribeType.StarDream => new RocketUpdater(),
+            MagicSubscribeType.Frog =>new SonguoUpdater(),
             _ => throw new MagicException("this subscribe type not supported")
         };
     }
