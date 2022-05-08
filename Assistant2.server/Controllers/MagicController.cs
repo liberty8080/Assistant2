@@ -11,12 +11,12 @@ public class MagicController
     private readonly MagicSubscribeService _service;
     private readonly ILogger<MagicController> _logger;
 
-    public MagicController(MagicSubscribeService service,ILogger<MagicController> logger)
+    public MagicController(MagicSubscribeService service, ILogger<MagicController> logger)
     {
         _service = service;
         _logger = logger;
     }
-    
+
     [HttpGet("all")]
     public ApiResult All()
     {
@@ -24,21 +24,51 @@ public class MagicController
     }
 
     [HttpGet("update")]
-    public void UpdateById(int id)
+    public ApiResult UpdateById(int id)
     {
-        _service.UpdateById(id);
+        try
+        {
+            _service.UpdateById(id);
+            return ApiResult.Success(null);
+        }
+        catch (Exception e)
+        {
+            return ApiResult.Failed(10000, "更新失败！");
+        }
     }
 
-    [HttpPost("edit")]
-    public void Edit(MagicSubscribe subscribe)
+
+    [HttpPut]
+    public ApiResult Edit(MagicSubscribe subscribe)
     {
-        _service.Edit(subscribe);
+        try
+        {
+            _service.Edit(subscribe);
+            return ApiResult.Success(null);
+        }
+        catch (Exception e)
+        {
+            return ApiResult.Failed(10000, "更新失败！");
+        }
     }
 
-    [HttpPost("remove")]
+    [HttpDelete]
     public void Remove(MagicSubscribe subscribe)
     {
         _service.Remove(subscribe);
     }
-    
+
+    [HttpPost]
+    public ApiResult Add(MagicSubscribe subscribe)
+    {
+        try
+        {
+            _service.Add(subscribe);
+            return ApiResult.Success(null);
+        }
+        catch (Exception e)
+        {
+            return ApiResult.Failed(10000, "添加失败！");
+        }
+    }
 }

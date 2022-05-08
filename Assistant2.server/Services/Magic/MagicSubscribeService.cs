@@ -39,4 +39,10 @@ public class MagicSubscribeService
     {
         _context.Remove(subscribe);
     }
+
+    public void Add(MagicSubscribe subscribe)
+    {
+        _context.Add(subscribe);
+        _context.SaveChanges();
+    }
 }
