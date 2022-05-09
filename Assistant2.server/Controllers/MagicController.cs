@@ -52,10 +52,11 @@ public class MagicController
         }
     }
 
-    [HttpDelete]
-    public void Remove(MagicSubscribe subscribe)
+    [HttpDelete("{id:int}")]
+    public ApiResult Remove(int id)
     {
-        _service.Remove(subscribe);
+        _service.Remove(id);
+        return ApiResult.Success(null);
     }
 
     [HttpPost]

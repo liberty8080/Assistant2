@@ -35,9 +35,10 @@ public class MagicSubscribeService
         _context.Update(subscribe);
     }
 
-    public void Remove(MagicSubscribe subscribe)
+    public void Remove(int id)
     {
-        _context.Remove(subscribe);
+        _context.Remove(new MagicSubscribe{Id = id});
+        _context.SaveChanges();
     }
 
     public void Add(MagicSubscribe subscribe)
