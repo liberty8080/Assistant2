@@ -32,7 +32,9 @@ public class MagicSubscribeService
 
     public void Edit(MagicSubscribe subscribe)
     {
+        // insert or update, dynamic
         _context.Update(subscribe);
+        _context.SaveChanges();
     }
 
     public void Remove(int id)
