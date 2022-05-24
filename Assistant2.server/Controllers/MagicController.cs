@@ -33,7 +33,7 @@ public class MagicController
         }
         catch (Exception e)
         {
-            return ApiResult.Failed(10000, "更新失败！");
+            return ApiResult.Failed("更新失败！");
         }
     }
 
@@ -48,7 +48,7 @@ public class MagicController
         }
         catch (Exception e)
         {
-            return ApiResult.Failed(10000, "更新失败！");
+            return ApiResult.Failed("更新失败!");
         }
     }
 
@@ -62,9 +62,8 @@ public class MagicController
         }
         catch (Exception)
         {
-            return ApiResult.Failed(10000,"删除失败！");
+            return ApiResult.Failed("删除失败！");
         }
-        
     }
 
     [HttpPost]
@@ -77,7 +76,7 @@ public class MagicController
         }
         catch (Exception e)
         {
-            return ApiResult.Failed(10000, "添加失败！");
+            return ApiResult.Failed("添加失败！");
         }
     }
 }

@@ -49,7 +49,7 @@ public class ChanifyController
             _ => ""
         };
 
-        return new ApiResult {Code = 200, Data = null, Msg = msg};
+        return ApiResult.None(msg);
     }
 
     [HttpDelete("{id:int}")]
@@ -62,7 +62,7 @@ public class ChanifyController
         }
         catch (Exception)
         {
-            return ApiResult.Failed(10000,"删除失败");
+            return ApiResult.Failed("删除失败");
         }
     }
 }
