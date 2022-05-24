@@ -55,8 +55,16 @@ public class MagicController
     [HttpDelete("{id:int}")]
     public ApiResult Remove(int id)
     {
-        _service.Remove(id);
-        return ApiResult.Success(null);
+        try
+        {
+            _service.Remove(id);
+            return ApiResult.Success(null);
+        }
+        catch (Exception)
+        {
+            return ApiResult.Failed(10000,"删除失败！");
+        }
+        
     }
 
     [HttpPost]

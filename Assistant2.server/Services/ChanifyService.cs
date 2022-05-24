@@ -4,6 +4,7 @@ using System.Text.Json;
 using Assistant2.Dao;
 using Assistant2.Exceptions;
 using Assistant2.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -110,15 +111,16 @@ public class ChanifyService : IAnnounceService
         return channels;
     }
 
-    public void Update(ChanifyChannel channel)
+    public EntityState Update(ChanifyChannel channel)
     {
-        _context.ChanifyChannels.Update(channel);
+        var ss = _context.ChanifyChannels.Update(channel).State;
         _context.SaveChanges();
+        return ss;
     }
 
-    public void Remove(ChanifyChannel channel)
+    public void Remove(int id)
     {
-        _context.ChanifyChannels.Remove(channel);
+        _context.ChanifyChannels.Remove(new ChanifyChannel{Id = id});
         _context.SaveChanges();
     }
 }

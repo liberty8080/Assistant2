@@ -1,6 +1,7 @@
 ﻿using Assistant2.Models;
 using Assistant2.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assistant2.Controllers;
 
@@ -18,9 +19,9 @@ public class ChanifyController
     }
 
     [HttpGet("all")]
-    public IEnumerable<ChanifyChannel> GetAll()
-    {
-        return _service.ChannelsAll();
+    public ApiResult GetAll()
+    {   
+        return ApiResult.Success(_service.ChannelsAll());
     }
 
     [HttpPost("getbytype")]
@@ -38,14 +39,30 @@ public class ChanifyController
     }
 
     [HttpPost("update")]
-    public void Update(ChanifyChannel channel)
+    public ApiResult Update(ChanifyChannel channel)
     {
-        _service.Update(channel);
+        var state = _service.Update(channel);
+        var msg = state switch
+        {
+            EntityState.Added => "添加成功",
+            EntityState.Modified => "修改成功",
+            _ => ""
+        };
+
+        return new ApiResult {Code = 200, Data = null, Msg = msg};
     }
 
-    [HttpPost("remove")]
-    public void Remove(ChanifyChannel channel)
+    [HttpDelete("{id:int}")]
+    public ApiResult Remove(int id)
     {
-        _service.Remove(channel);
+        try
+        {
+            _service.Remove(id);
+            return ApiResult.Success(null);
+        }
+        catch (Exception)
+        {
+            return ApiResult.Failed(10000,"删除失败");
+        }
     }
 }
