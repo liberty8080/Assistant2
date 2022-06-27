@@ -13,15 +13,15 @@ public class SonguoUpdater : IMagicSubUpdater
             throw new MagicException("url can not be null");
         }
         var client = new HttpClient();
-        var res =  client.GetAsync(subscribe.Url).Result
-            .Content.ReadAsStringAsync().Result;
+        var res =  client.GetStringAsync(subscribe.Url).Result;
         subscribe.Data = res;
         // raw data
         var subData = GetSubData(res);
-        var bandwidthLeft = DecodeV2Data(subData[0]);
-        var expireTime = DecodeV2Data(subData[1]);
-
-        if (bandwidthLeft.remark != "")
+        // var bandwidthLeft = DecodeV2Data(subData[0]);
+        // var expireTime = DecodeV2Data(subData[1]);
+        var v2Entities = subData.Select(DecodeV2Data).ToArray();
+        Console.WriteLine(v2Entities);
+        /*if (bandwidthLeft.remark != "")
         {
             subscribe.BandwidthLeft = bandwidthLeft.remark;
             subscribe.ExpirationTime = expireTime.remark;
@@ -33,7 +33,7 @@ public class SonguoUpdater : IMagicSubUpdater
         else
         {
             throw new MagicException("failed to get subscribe information");
-        }
+        }*/
         
     }
 }
