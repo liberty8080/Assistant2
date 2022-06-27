@@ -2,6 +2,7 @@
 using Assistant2.Dao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assistant2.Migrations
 {
     [DbContext(typeof(AssistantDbContext))]
-    partial class AssistantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220627123531_DDNS")]
+    partial class DDNS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -37,7 +39,7 @@ namespace Assistant2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ChanifyChannels");
+                    b.ToTable("chanify_channel", (string)null);
                 });
 
             modelBuilder.Entity("Assistant2.Models.DDNSConfig", b =>
@@ -132,7 +134,7 @@ namespace Assistant2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MagicSubscribes");
+                    b.ToTable("magic_subscribe", (string)null);
                 });
 #pragma warning restore 612, 618
         }

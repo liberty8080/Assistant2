@@ -16,6 +16,8 @@ public class AssistantDbContext:DbContext
 
     public DbSet<ChanifyChannel> ChanifyChannels => Set<ChanifyChannel>();
     public DbSet<MagicSubscribe> MagicSubscribes => Set<MagicSubscribe>();
+    public DbSet<DDNSConfig> DdnsConfigs => Set<DDNSConfig>();
+    public DbSet<DDNSHistory> DdnsHistories => Set<DDNSHistory>();
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // optionsBuilder.UseSqlite("Data Source=db/assistant.db");
@@ -24,9 +26,7 @@ public class AssistantDbContext:DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ChanifyChannel>().ToTable("chanify_channel")
-            .Property(e=>e.Type).HasConversion<string>();
-        modelBuilder.Entity<MagicSubscribe>().ToTable("magic_subscribe")
-            .Property(e => e.Type).HasConversion<string>();
+        modelBuilder.Entity<ChanifyChannel>().Property(e=>e.Type).HasConversion<string>();
+        modelBuilder.Entity<MagicSubscribe>().Property(e => e.Type).HasConversion<string>();
     }
 }
