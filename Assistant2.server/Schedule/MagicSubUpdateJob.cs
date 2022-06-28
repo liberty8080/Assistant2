@@ -1,5 +1,6 @@
 ﻿using Assistant2.Exceptions;
 using Assistant2.Services;
+using Assistant2.Services.Announce;
 using Assistant2.Services.Magic;
 using Quartz;
 
@@ -29,9 +30,10 @@ public class MagicSubUpdateJob : IJob
             var magicSubscribes = subscribes.ToList();
             if (!magicSubscribes.Any())
             {
-                _announce.SendMagic("更新失败，未添加订阅链接","",1);
+                _announce.SendMagic("更新失败，未添加订阅链接", "", 1);
                 return;
             }
+
             foreach (var s in magicSubscribes)
             {
                 try
@@ -41,7 +43,7 @@ public class MagicSubUpdateJob : IJob
                 catch (MagicException e)
                 {
                     _logger.LogError("magic sub update error! {Ex}", e.ToString());
-                    _announce.SendMagic(s.Comment,"订阅更新失败！",1);
+                    _announce.SendMagic(s.Comment, "订阅更新失败！", 1);
                 }
             }
         });

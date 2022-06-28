@@ -2,7 +2,7 @@ using System.Net;
 using Assistant2.Dao;
 using Assistant2.Models;
 
-namespace Assistant2.Services.DDns;
+namespace Assistant2.Services.DDNS;
 
 // no support for multiple hostname
 // todo: piece of shit,thinking and rewrite
@@ -20,10 +20,11 @@ public class DDnsService
         {
             dbContext.Add(new DDNSHistory() {ConfigId = 1,});
         }
+
         var ipv4 = dbContext.DdnsHistories.OrderByDescending(h => h.UpdateTime).First().Ipv4;
         PreviousIp = IPAddress.Parse(ipv4);
     }
-    
+
 
     /// <summary>
     /// Query public ip ,v4 only
@@ -33,7 +34,7 @@ public class DDnsService
     {
         var ip = await _client.GetAsync("https://myip.ipip.net/s").Result
             .Content.ReadAsStringAsync();
-         CurrentIp = IPAddress.Parse(ip.Replace("\n", ""));
+        CurrentIp = IPAddress.Parse(ip.Replace("\n", ""));
     }
 
     // dynu api

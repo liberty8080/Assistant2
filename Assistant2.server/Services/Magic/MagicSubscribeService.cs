@@ -1,5 +1,6 @@
 using Assistant2.Dao;
 using Assistant2.Models;
+using Assistant2.Services.Magic.Updater;
 
 namespace Assistant2.Services.Magic;
 

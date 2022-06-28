@@ -2,6 +2,7 @@ using Assistant2.Dao;
 using Assistant2.Models;
 using Assistant2.Schedule;
 using Assistant2.Services;
+using Assistant2.Services.Announce;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddRouting(options => options.LowercaseUrls=true);
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -26,7 +27,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddDbContext<AssistantDbContext>(
-    options=>options.UseSqlite("Data Source=assistant.db"));
+    options => options.UseSqlite("Data Source=assistant.db"));
 builder.Services.AddScoped<IAnnounceService, ChanifyService>();
 builder.Services.AddScoped<ChanifyService>();
 // 定时任务
@@ -40,6 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 // app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

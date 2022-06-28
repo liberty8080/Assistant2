@@ -13,22 +13,19 @@ public static class MagicJobExtension
         services.AddScoped<MagicSubscribeService>();
 
         services.AddQuartz(q =>
-        {
-            q.UseMicrosoftDependencyInjectionJobFactory();
+            {
+                q.UseMicrosoftDependencyInjectionJobFactory();
 
-            q.ScheduleJob<MagicSubUpdateJob>(trigger =>
-                {
-                    trigger.WithIdentity("magicSubUpdate")
-                        .WithCronSchedule("0 45 23 * * ?")
-                        .ForJob("magicJob");
-                }
-            );
-        }
-           );
-        services.AddQuartzHostedService(options =>
-        {
-            options.WaitForJobsToComplete = true;
-        });
+                q.ScheduleJob<MagicSubUpdateJob>(trigger =>
+                    {
+                        trigger.WithIdentity("magicSubUpdate")
+                            .WithCronSchedule("0 45 23 * * ?")
+                            .ForJob("magicJob");
+                    }
+                );
+            }
+        );
+        services.AddQuartzHostedService(options => { options.WaitForJobsToComplete = true; });
 
 
         return services;

@@ -2,8 +2,10 @@ namespace Assistant2.Models;
 
 public enum ChanifyChannelType
 {
-    Default,Magic
+    Default,
+    Magic
 }
+
 public class ChanifyChannel
 {
     public int Id { get; set; }
@@ -12,7 +14,6 @@ public class ChanifyChannel
     public string? Comment { get; set; }
     public ChanifyChannelType Type { get; set; }
 }
-
 
 public class ChanifyRequest
 {
@@ -23,7 +24,4 @@ public class ChanifyRequest
     public int Autocopy { get; set; }
     public int Sound { get; set; }
     public int Priority { get; set; }
-    
 }
-
-

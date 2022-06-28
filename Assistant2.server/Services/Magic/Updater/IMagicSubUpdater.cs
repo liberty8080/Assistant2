@@ -1,7 +1,7 @@
 using Assistant2.Exceptions;
 using Assistant2.Models;
 
-namespace Assistant2.Services.Magic;
+namespace Assistant2.Services.Magic.Updater;
 
 public interface IMagicSubUpdater
 {
@@ -15,8 +15,7 @@ public static class MagicSubUpdaterFactory
         return magic.Type switch
         {
             MagicSubscribeType.V2 => new V2Updater(magic),
-            MagicSubscribeType.StarDream => new RocketUpdater(magic),
-            MagicSubscribeType.Frog => new V2Updater(magic),
+            MagicSubscribeType.Rocket => new RocketUpdater(magic),
             _ => throw new MagicException("this subscribe type not supported")
         };
     }
@@ -35,12 +34,16 @@ public abstract class BaseUpdater : IMagicSubUpdater
     }
 
     protected MagicSubscribe Subscribe { get; set; }
+
     protected void FetchData()
     {
-        if (Subscribe.Url == string.Empty) return;
+        if (Subscribe.Url == string.Empty)
+        {
+            throw new MagicException("subscribe url should not be empty!");
+        }
+
         var client = new HttpClient();
-        var rowData = client.GetStringAsync(Subscribe.Url).Result;
-        Subscribe.Data = rowData;
+        Subscribe.Data = client.GetStringAsync(Subscribe.Url).Result;
     }
 
     public abstract void UpdateSubInfo();

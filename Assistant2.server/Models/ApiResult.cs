@@ -4,7 +4,7 @@ public class ApiResult
 {
     public const int Ok = 200;
     public const int Error = 10000;
-        
+
     public int Code { get; set; }
     public string? Msg { get; set; }
     public object? Data { get; set; }

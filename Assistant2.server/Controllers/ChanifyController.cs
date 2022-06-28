@@ -1,5 +1,6 @@
 ﻿using Assistant2.Models;
 using Assistant2.Services;
+using Assistant2.Services.Announce;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ public class ChanifyController
     private readonly ChanifyService _service;
     private readonly ILogger<ChanifyController> _logger;
 
-    public ChanifyController(ChanifyService service,ILogger<ChanifyController> logger)
+    public ChanifyController(ChanifyService service, ILogger<ChanifyController> logger)
     {
         _service = service;
         _logger = logger;
@@ -20,7 +21,7 @@ public class ChanifyController
 
     [HttpGet("all")]
     public ApiResult GetAll()
-    {   
+    {
         return ApiResult.Success(_service.ChannelsAll());
     }
 
@@ -33,7 +34,7 @@ public class ChanifyController
         }
         catch (Exception e)
         {
-            _logger.LogError("chanify 查询失败！cause:{Msg}",e.Message);
+            _logger.LogError("chanify 查询失败！cause:{Msg}", e.Message);
             return ApiResult.Success(null);
         }
     }

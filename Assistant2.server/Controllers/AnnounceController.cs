@@ -1,5 +1,6 @@
 using Assistant2.Dao;
 using Assistant2.Services;
+using Assistant2.Services.Announce;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Assistant2.Controllers;
@@ -17,11 +18,10 @@ public class AnnounceController
         _service = service;
         _logger = logger;
     }
+
     [HttpGet("send")]
     public void Send(string msg)
     {
         _service.SendDefault("test");
     }
-
-
- }
+}

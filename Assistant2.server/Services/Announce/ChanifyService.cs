@@ -1,6 +1,5 @@
 using System.Net;
 using System.Text;
-using System.Text.Json;
 using Assistant2.Dao;
 using Assistant2.Exceptions;
 using Assistant2.Models;
@@ -8,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Assistant2.Services;
+namespace Assistant2.Services.Announce;
 
 public class ChanifyService : IAnnounceService
 {
@@ -120,7 +119,7 @@ public class ChanifyService : IAnnounceService
 
     public void Remove(int id)
     {
-        _context.ChanifyChannels.Remove(new ChanifyChannel{Id = id});
+        _context.ChanifyChannels.Remove(new ChanifyChannel {Id = id});
         _context.SaveChanges();
     }
 }
