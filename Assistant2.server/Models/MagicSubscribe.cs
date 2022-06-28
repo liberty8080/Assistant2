@@ -9,11 +9,15 @@ public enum MagicSubscribeType
 public class MagicSubscribe
 {
     public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+
     public string Url { get; set; } = string.Empty;
-    public string ExpirationTime { get; set; } = string.Empty;
-    public string BandwidthLeft { get; set; } = string.Empty;
+
+    // public string ExpirationTime { get; set; } = string.Empty;
+    // public string BandwidthLeft { get; set; } = string.Empty;
     public MagicSubscribeType Type { get; set; }
-    public string Data { get; set; } = string.Empty;
+
+    // public string Data { get; set; } = string.Empty;
     public string Cron { get; set; } = string.Empty;
     public string RocketRegex { get; set; } = string.Empty;
     public string Comment { get; set; } = string.Empty;

@@ -5,7 +5,7 @@ namespace Assistant2.Services.Magic.Updater;
 
 public interface IMagicSubUpdater
 {
-    public void UpdateSubInfo();
+    public MagicSubHistory SubInfo();
 }
 
 public static class MagicSubUpdaterFactory
@@ -34,6 +34,7 @@ public abstract class BaseUpdater : IMagicSubUpdater
     }
 
     protected MagicSubscribe Subscribe { get; set; }
+    protected MagicSubHistory History { get; set; }
 
     protected void FetchData()
     {
@@ -43,8 +44,8 @@ public abstract class BaseUpdater : IMagicSubUpdater
         }
 
         var client = new HttpClient();
-        Subscribe.Data = client.GetStringAsync(Subscribe.Url).Result;
+        History.Data = client.GetStringAsync(Subscribe.Url).Result;
     }
 
-    public abstract void UpdateSubInfo();
+    public abstract MagicSubHistory SubInfo();
 }

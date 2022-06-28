@@ -14,17 +14,18 @@ public class RocketUpdater : BaseUpdater
     private const string Reg = @"^STATUS=(.*)\nREMARKS=.*\n";
     private const string DefaultPattern = @"\D*(?<bandwidth>\d+\.\d+[MGT]B)\D*(?<expire>\d{4}[-.]\d{2}[-.]\d{2})";
 
-    public override void UpdateSubInfo()
+    public override MagicSubHistory SubInfo()
     {
-        if (Subscribe.Data == string.Empty)
+        if (History.Data == string.Empty)
         {
             FetchData();
         }
 
-        var rowData = MagicUtil.DecodeBase64(Subscribe.Data);
+        var rowData = MagicUtil.DecodeBase64(History.Data);
         var matches = Regex.Match(rowData, Reg);
         var status = matches.Groups[1].Value;
         ParseInfo(status);
+        return History;
     }
 
     // parse expire time and flow 
@@ -38,7 +39,7 @@ public class RocketUpdater : BaseUpdater
                                      "use named regex: [bandwidth,expire]");
         }
 
-        Subscribe.BandwidthLeft = m.Groups["bandwidth"].Value;
-        Subscribe.ExpirationTime = m.Groups["expire"].Value;
+        History.BandwidthLeft = ConvertUtil.AnyToGb(m.Groups["bandwidth"].Value);
+        History.ExpirationTime = DateTime.Parse(m.Groups["expire"].Value);
     }
 }

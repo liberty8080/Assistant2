@@ -9,20 +9,21 @@ public class V2Updater : BaseUpdater
     {
     }
 
-    public override void UpdateSubInfo()
+    public override MagicSubHistory SubInfo()
     {
-        if (Subscribe.Data == string.Empty)
+        if (History.Data == string.Empty)
         {
             FetchData();
         }
 
         // raw data
-        var subData = GetSubData(Subscribe.Data);
+        var subData = GetSubData(History.Data);
         var v2Entities = subData.Select(DecodeV2Data).ToArray();
         foreach (var v2Entity in v2Entities)
         {
             Console.WriteLine(v2Entity.ps);
         }
+        return History;
     }
 
     private void ParseBandwidth(V2Entity v2)

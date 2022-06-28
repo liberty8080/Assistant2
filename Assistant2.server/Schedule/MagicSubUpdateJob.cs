@@ -43,7 +43,7 @@ public class MagicSubUpdateJob : IJob
                 catch (MagicException e)
                 {
                     _logger.LogError("magic sub update error! {Ex}", e.ToString());
-                    _announce.SendMagic(s.Comment, "订阅更新失败！", 1);
+                    _announce.SendMagic(s.Name, "订阅更新失败！", 1);
                 }
             }
         });
