@@ -4,17 +4,21 @@ using static Assistant2.Util.MagicUtil;
 
 namespace Assistant2.Services.Magic;
 
-public class V2Updater : IMagicSubUpdater
+public class V2Updater : BaseUpdater
 {
-    public void Update(ref MagicSubscribe subscribe)
+    public V2Updater(MagicSubscribe subscribe) : base(subscribe)
     {
-        if (subscribe.Url == string.Empty)
+    }
+    public override void UpdateSubInfo()
+    {
+        
+        if (Subscribe.Url == string.Empty)
         {
             throw new MagicException("url can not be null");
         }
         var client = new HttpClient();
-        var res =  client.GetStringAsync(subscribe.Url).Result;
-        subscribe.Data = res;
+        var res =  client.GetStringAsync(Subscribe.Url).Result;
+       Subscribe.Data = res;
         // raw data
         var subData = GetSubData(res);
         // var bandwidthLeft = DecodeV2Data(subData[0]);
@@ -36,4 +40,6 @@ public class V2Updater : IMagicSubUpdater
         }*/
         
     }
+
+  
 }

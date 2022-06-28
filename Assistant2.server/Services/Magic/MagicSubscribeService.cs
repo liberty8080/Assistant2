@@ -20,8 +20,8 @@ public class MagicSubscribeService
     {
         var sub = _context.MagicSubscribes
             .Single(e => e.Id == id);
-        var updater = MagicSubUpdaterFactory.Updater(sub.Type);
-        updater.Update(ref sub);
+        var updater = MagicSubUpdaterFactory.Updater(sub);
+        updater.UpdateSubInfo();
         _context.SaveChanges();
     }
 
@@ -39,7 +39,7 @@ public class MagicSubscribeService
 
     public void Remove(int id)
     {
-        _context.Remove(new MagicSubscribe{Id = id});
+        _context.Remove(new MagicSubscribe {Id = id});
         _context.SaveChanges();
     }
 

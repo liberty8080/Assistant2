@@ -12,12 +12,12 @@ public class MagicTest
     [Test]
     public void SubInfoTest()
     {
-        var songuo = new V2Updater();
         var sub = new MagicSubscribe
         {
             Url = ""
         };
-        songuo.Update(ref sub);
+        var songuo = new V2Updater(sub);
+        songuo.UpdateSubInfo();
         Console.WriteLine(sub);
     }
 
@@ -29,7 +29,8 @@ public class MagicTest
         {
             RocketRegex = @"剩余流量：(?<bandwidth>\d\.\d{2}(GB|TB|MB)).♥.(?<expire>\d{4}-\d{2}-\d{2})"
         };
-        RocketUpdater.ParseInfo(ref s,status);
+        var updater = new RocketUpdater(s);
+        updater.ParseInfo();
         Console.WriteLine(s.BandwidthLeft);
         Console.WriteLine(s.ExpirationTime);
     }

@@ -7,32 +7,35 @@ namespace Assistant2.Services.Magic;
 
 public class RocketUpdater : BaseUpdater
 {
+    public RocketUpdater(MagicSubscribe subscribe) : base(subscribe)
+    {
+    }
     private const string Reg = @"^STATUS=(.*)\nREMARKS=.*\n";
 
-    public override void Update(ref MagicSubscribe subscribe)
+    public override void UpdateSubInfo()
     {
-        if (subscribe.Data != string.Empty)
+        if (Subscribe.Data == string.Empty)
         {
-            var rowData = MagicUtil.DecodeBase64(subscribe.Data);
-            var matches = Regex.Match(rowData, Reg);
-            var status = matches.Groups[1].Value;
-            // var remarks = matches.Groups[2].Value;
+            FetchData();
         }
-        else
-        {
-        }
+        ParseInfo();
     }
 
     // parse expire time and flow 
-    public static void ParseInfo(ref MagicSubscribe subscribe, string target)
+    public void ParseInfo()
     {
-        var m = Regex.Match(target, subscribe.RocketRegex);
+        var rowData = MagicUtil.DecodeBase64(Subscribe.Data);
+        var matches = Regex.Match(rowData, Reg);
+        var status = matches.Groups[1].Value;
+        var m = Regex.Match(status, Subscribe.RocketRegex);
         if (!m.Groups[1].Success || !m.Groups[2].Success)
         {
-            throw new MagicException($"sub info parse failed! original string is:{target}" +
+            throw new MagicException($"sub info parse failed! original string is:{status}" +
                                      "use named regex: [bandwidth,expire]");
         }
-        subscribe.BandwidthLeft = m.Groups["bandwidth"].Value;
-        subscribe.ExpirationTime = m.Groups["expire"].Value;
+        Subscribe.BandwidthLeft = m.Groups["bandwidth"].Value;
+        Subscribe.ExpirationTime = m.Groups["expire"].Value;
     }
+
+
 }

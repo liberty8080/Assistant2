@@ -33,7 +33,7 @@ public class Tests
             Url = Url,
         };
         var updater =MagicSubUpdaterFactory.Updater(subscribe);
-        updater.Update(ref subscribe);
+        updater.UpdateSubInfo();
         Console.WriteLine(updater.ToString());
     }
 }

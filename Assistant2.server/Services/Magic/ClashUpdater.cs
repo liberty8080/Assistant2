@@ -4,7 +4,7 @@ namespace Assistant2.Services.Magic;
 
 public class ClashUpdater:IMagicSubUpdater
 {
-    public void Update(ref MagicSubscribe subscribe)
+    public void UpdateSubInfo()
     {
         throw new NotImplementedException();
     }
