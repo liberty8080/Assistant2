@@ -7,11 +7,16 @@ namespace Assistant2.Util;
 
 public static class MagicUtil
 {
+
+    public static string DecodeBase64(string data)
+    {
+        return Encoding.UTF8.GetString(Convert.FromBase64String(data));
+    }
     // v2 decode once
     public static string[] GetSubData(string data)
     {
         // decode 1
-        var d1 = Encoding.UTF8.GetString(Convert.FromBase64String(data));
+        var d1 = DecodeBase64(data);
         // sub raw data
         var subRawData = d1.Split("\n");
         

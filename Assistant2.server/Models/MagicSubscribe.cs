@@ -14,5 +14,6 @@ public class MagicSubscribe
     public MagicSubscribeType Type { get; set; }
     public string Data { get; set; }
     public string Cron { get; set; }
+    public string RocketRegex { get; set; }
     public string Comment { get; set; }
 }
