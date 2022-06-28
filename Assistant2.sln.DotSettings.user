@@ -5,6 +5,7 @@
     &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Tests.TestUpdater&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.DDnsServiceTest.GetIpTest&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.SubInfoTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.ParseTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Songuo/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
