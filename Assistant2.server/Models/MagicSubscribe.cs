@@ -2,7 +2,7 @@ namespace Assistant2.Models;
 
 public enum MagicSubscribeType
 {
-    Songuo,StarDream,Frog
+    V2,StarDream,Frog
 }
 
 public class MagicSubscribe

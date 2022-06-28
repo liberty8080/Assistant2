@@ -1,11 +1,19 @@
+using System.Text.RegularExpressions;
 using Assistant2.Models;
+using Assistant2.Util;
 
 namespace Assistant2.Services.Magic;
 
-public class RocketUpdater:IMagicSubUpdater
+public class RocketUpdater : BaseUpdater
 {
-    public void Update(ref MagicSubscribe subscribe)
+
+    private readonly string _reg = @"^STATUS=(.*)\nREMARKS=(.*)\n";
+    public override void Update(ref MagicSubscribe subscribe)
     {
-        throw new NotImplementedException();
+        if (subscribe.Data != string.Empty)
+        {
+            var rowData = MagicUtil.GetSubData(subscribe.Data);
+            // var matches = Regex.Matches(rowData, _reg);
+        }
     }
 }

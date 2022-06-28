@@ -12,7 +12,7 @@ public class MagicTest
     [Test]
     public void SubInfoTest()
     {
-        var songuo = new SonguoUpdater();
+        var songuo = new V2Updater();
         var sub = new MagicSubscribe
         {
             Url = ""

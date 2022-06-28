@@ -29,7 +29,7 @@ public class Tests
     {
         MagicSubscribe subscribe = new()
         {
-            Type = MagicSubscribeType.Songuo,
+            Type = MagicSubscribeType.V2,
             Url = Url,
         };
         var updater =MagicSubUpdaterFactory.Updater(subscribe);

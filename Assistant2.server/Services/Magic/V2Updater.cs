@@ -4,7 +4,7 @@ using static Assistant2.Util.MagicUtil;
 
 namespace Assistant2.Services.Magic;
 
-public class SonguoUpdater : IMagicSubUpdater
+public class V2Updater : IMagicSubUpdater
 {
     public void Update(ref MagicSubscribe subscribe)
     {
