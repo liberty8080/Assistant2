@@ -16,6 +16,7 @@ public class AssistantDbContext : DbContext
 
     public DbSet<ChanifyChannel> ChanifyChannels => Set<ChanifyChannel>();
     public DbSet<MagicSubscribe> MagicSubscribes => Set<MagicSubscribe>();
+    public DbSet<MagicSubHistory> MagicSubHistories => Set<MagicSubHistory>();
     public DbSet<DDNSConfig> DdnsConfigs => Set<DDNSConfig>();
     public DbSet<DDNSHistory> DdnsHistories => Set<DDNSHistory>();
 

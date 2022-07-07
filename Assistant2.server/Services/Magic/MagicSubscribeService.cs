@@ -22,7 +22,8 @@ public class MagicSubscribeService
         var sub = _context.MagicSubscribes
             .Single(e => e.Id == id);
         var updater = MagicSubUpdaterFactory.Updater(sub);
-        updater.SubInfo();
+        var history = updater.SubInfo();
+        _context.Add(history);
         _context.SaveChanges();
     }
 

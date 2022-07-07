@@ -3,6 +3,7 @@ using System;
 using Assistant2.Dao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assistant2.Migrations
 {
     [DbContext(typeof(AssistantDbContext))]
-    partial class AssistantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220707132620_MagicModelChange")]
+    partial class MagicModelChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -94,33 +96,6 @@ namespace Assistant2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DdnsHistories");
-                });
-
-            modelBuilder.Entity("Assistant2.Models.MagicSubHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("BandwidthLeft")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Data")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ExpirationTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SubId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MagicSubHistories");
                 });
 
             modelBuilder.Entity("Assistant2.Models.MagicSubscribe", b =>
