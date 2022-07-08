@@ -26,8 +26,6 @@ public static class MagicJobExtension
             }
         );
         services.AddQuartzHostedService(options => { options.WaitForJobsToComplete = true; });
-
-
         return services;
     }
 }

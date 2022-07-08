@@ -31,10 +31,15 @@ public abstract class BaseUpdater : IMagicSubUpdater
     protected BaseUpdater(MagicSubscribe subscribe)
     {
         Subscribe = subscribe;
+        History = new MagicSubHistory
+        {
+            SubId = subscribe.Id,
+            UpdateTime = DateTime.Now
+        };
     }
 
-    protected MagicSubscribe Subscribe { get; set; }
-    protected MagicSubHistory History { get; set; }
+    protected MagicSubscribe Subscribe { get; }
+    protected MagicSubHistory History { get; }
 
     protected void FetchData()
     {
