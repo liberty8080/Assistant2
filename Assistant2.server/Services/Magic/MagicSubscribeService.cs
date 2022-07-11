@@ -27,10 +27,17 @@ public class MagicSubscribeService
         _context.SaveChanges();
     }
 
-    public IEnumerable<MagicSubscribe> Subscribes()
+    public IEnumerable<MagicSubDto> Subscribes()
     {
-        return _context.MagicSubscribes.ToArray();
+        // return _context.MagicSubscribes.ToArray();
+        var dto = from sub in _context.MagicSubscribes
+            join history in _context.MagicSubHistories
+                on sub.Id equals history.SubId into grouping
+            from history in grouping.DefaultIfEmpty()
+            select new MagicSubDto(sub,history);
+        return dto.ToArray();
     }
+    
 
     public void Edit(MagicSubscribe subscribe)
     {

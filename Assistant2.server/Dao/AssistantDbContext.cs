@@ -28,7 +28,8 @@ public class AssistantDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ChanifyChannel>().Property(e => e.Type).HasConversion<string>();
-        modelBuilder.Entity<MagicSubscribe>().Property(e => e.Type).HasConversion<string>();
+        // 枚举转换默认为String
+        // modelBuilder.Entity<ChanifyChannel>().Property(e => e.Type).HasConversion<string>();
+        // modelBuilder.Entity<MagicSubscribe>().Property(e => e.Type).HasConversion<string>();
     }
 }
