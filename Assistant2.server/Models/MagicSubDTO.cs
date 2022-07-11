@@ -7,7 +7,7 @@ public class MagicSubDto
         Id = subscribe.Id;
         Name = subscribe.Name;
         Url = subscribe.Url;
-        Type = subscribe.Type.ToString();
+        Type = (int)subscribe.Type;
         Cron = subscribe.Cron;
         RocketRegex = subscribe.RocketRegex;
         Comment = subscribe.Comment;
@@ -21,7 +21,7 @@ public class MagicSubDto
     public int Id { get; }
     public string Name { get; }
     public string Url { get; }
-    public string Type { get; }
+    public int Type { get; }
     public string Cron { get; }
     public string RocketRegex { get; }
     public string Comment { get; }

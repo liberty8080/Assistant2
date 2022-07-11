@@ -29,7 +29,7 @@ public class AssistantDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // 枚举转换默认为String
-        // modelBuilder.Entity<ChanifyChannel>().Property(e => e.Type).HasConversion<string>();
-        // modelBuilder.Entity<MagicSubscribe>().Property(e => e.Type).HasConversion<string>();
+        // modelBuilder.Entity<ChanifyChannel>().Property(e => e.Type).HasConversion<int>();
+        // modelBuilder.Entity<MagicSubscribe>().Property(e => e.Type).HasConversion<int>();
     }
 }
