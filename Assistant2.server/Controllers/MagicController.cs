@@ -23,6 +23,11 @@ public class MagicController
         return ApiResult.Success(_service.Subscribes());
     }
 
+    /// <summary>
+    /// 更新订阅数据
+    /// </summary>
+    /// <param name="id">sub ID</param>
+    /// <returns></returns>
     [HttpGet("update")]
     public ApiResult UpdateById(int id)
     {
@@ -33,7 +38,8 @@ public class MagicController
         }
         catch (Exception e)
         {
-            return ApiResult.Failed("更新失败！");
+            _logger.LogError("订阅更新失败！Cause:{Msg}",e.ToString());
+            return ApiResult.Failed("订阅更新失败！");
         }
     }
 

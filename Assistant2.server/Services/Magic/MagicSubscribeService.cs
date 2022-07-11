@@ -1,6 +1,7 @@
 using Assistant2.Dao;
 using Assistant2.Models;
 using Assistant2.Services.Magic.Updater;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assistant2.Services.Magic;
 
@@ -31,13 +32,17 @@ public class MagicSubscribeService
     {
         // return _context.MagicSubscribes.ToArray();
         var dto = from sub in _context.MagicSubscribes
-            join history in _context.MagicSubHistories
-                on sub.Id equals history.SubId into grouping
-            from history in grouping.DefaultIfEmpty()
-            select new MagicSubDto(sub,history);
+            from history in _context.MagicSubHistories
+            where history.SubId == sub.Id
+            orderby history.UpdateTime descending
+        on sub.Id equals history.SubId into grouping
+        from history in grouping.DefaultIfEmpty()
+            select new MagicSubDto(sub, history);
+        var dto = _context.MagicSubscribes
+            .FromSqlRaw("")
         return dto.ToArray();
     }
-    
+
 
     public void Edit(MagicSubscribe subscribe)
     {
