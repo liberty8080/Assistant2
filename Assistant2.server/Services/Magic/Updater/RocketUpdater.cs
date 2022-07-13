@@ -11,7 +11,7 @@ public class RocketUpdater : BaseUpdater
     {
     }
 
-    private const string Reg = @"^STATUS=(.*)\nREMARKS=.*\n";
+    private const string Reg = @"^STATUS=(.*)\n";
     private const string DefaultPattern = @"\D*(?<bandwidth>\d+\.\d+[MGT]B)\D*(?<expire>\d{4}[-.]\d{2}[-.]\d{2})";
 
     public override MagicSubHistory SubInfo()
@@ -23,7 +23,7 @@ public class RocketUpdater : BaseUpdater
 
         var rowData = MagicUtil.DecodeBase64(History.Data);
         var matches = Regex.Match(rowData, Reg);
-        var status = matches.Groups[1].Value;
+        var status = matches.Groups[1].Value.Trim();
         ParseInfo(status);
         return History;
     }

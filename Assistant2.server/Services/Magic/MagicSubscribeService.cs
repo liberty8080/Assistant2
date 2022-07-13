@@ -30,16 +30,11 @@ public class MagicSubscribeService
 
     public IEnumerable<MagicSubDto> Subscribes()
     {
-        // return _context.MagicSubscribes.ToArray();
         var dto = from sub in _context.MagicSubscribes
-            from history in _context.MagicSubHistories
-            where history.SubId == sub.Id
-            orderby history.UpdateTime descending
-        on sub.Id equals history.SubId into grouping
-        from history in grouping.DefaultIfEmpty()
+            let history = _context.MagicSubHistories.Where(h=>h.SubId==sub.Id)
+                .OrderByDescending(h=>h.Id).First()
             select new MagicSubDto(sub, history);
-        var dto = _context.MagicSubscribes
-            .FromSqlRaw("")
+
         return dto.ToArray();
     }
 
