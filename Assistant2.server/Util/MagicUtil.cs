@@ -27,9 +27,19 @@ public static class MagicUtil
     public static V2Entity DecodeV2Data(string data)
     {
         var d = data.Replace("vmess://", "");
-        var json = Encoding.UTF8.GetString(Convert.FromBase64String(d));
-        var v2 = JsonConvert.DeserializeObject<V2Entity>(json);
-        return v2;
+        try
+        {
+            var json = Encoding.UTF8.GetString(Convert.FromBase64String(d));
+            var v2 = JsonConvert.DeserializeObject<V2Entity>(json);
+            return v2;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("base64 parse failed!{0}",d);
+        }
+
+        return new V2Entity();
+
     }
 
     public static bool CheckV2Format(string data)

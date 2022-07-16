@@ -12,7 +12,7 @@ public class MagicSubDto
         RocketRegex = subscribe.RocketRegex;
         Comment = subscribe.Comment;
         if (history == null) return;
-        ExpirationTime = history.ExpirationTime.ToString("yyyy-MM-dd HH:mm:ss");
+        ExpirationTime = $"{history.ExpirationTime:yyyy-MM-dd HH:mm:ss}";
         UpdateTime = history.UpdateTime.ToString("yyyy-MM-dd HH:mm:ss");
         Data = history.Data;
         BandwidthLeft = history.BandwidthLeft;

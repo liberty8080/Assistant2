@@ -11,7 +11,7 @@ public class MagicSubHistory
     public int SubId { get; set; }
 
     [Column(Order = 2)] 
-    public DateTime ExpirationTime { get; set; }
+    public DateTime? ExpirationTime { get; set; }
 
     [Column(Order = 3)]
     public DateTime UpdateTime { get; set; }
