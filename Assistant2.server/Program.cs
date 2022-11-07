@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
         corsPolicyBuilder =>
         {
             corsPolicyBuilder
-                .WithOrigins("http://localhost","http://192.168.98.12")
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader();
         });
