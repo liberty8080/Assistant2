@@ -1,5 +1,5 @@
 ﻿
-name: Build & Push to Dockerhub
+name: Build & Push to Dockerhub test
 on:
   push:
     branches:
