@@ -1,0 +1,17 @@
+﻿language: bash
+
+dist: xenial
+
+services:
+  - docker
+
+before_script:
+  # 登录到 docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+script:
+  - echo "test code"
+
+after_success:
+  - docker build -t jacob233/assistant2 .
+  - docker push jacob233/assistant2
