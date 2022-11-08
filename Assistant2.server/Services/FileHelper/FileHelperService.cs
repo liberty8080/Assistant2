@@ -10,7 +10,8 @@ public class FileHelperService
     {
         _logger = logger;
     }
-  
+
+    //todo: windows and linux 
     public IEnumerable<string> ShowRootFiles()
     {
         var drives = Environment.GetLogicalDrives();
@@ -23,12 +24,14 @@ public class FileHelperService
                 _logger.LogWarning("The drive {DiName} could not be read", di.Name);
                 continue;
             }
+
             var rootDir = di.RootDirectory;
             fileInfos.AddRange(WalkDirectoryTree(rootDir));
         }
+
         return fileInfos.ToArray();
     }
-    
+
     public IEnumerable<string> WalkDirectoryTree(DirectoryInfo root)
     {
         var files = new List<string>();
@@ -36,6 +39,10 @@ public class FileHelperService
         {
             files.AddRange(Directory.GetFiles(root.FullName));
             files.AddRange(Directory.GetDirectories(root.FullName));
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            _logger.LogWarning(e, "Permission denied! path:{pah}", root.FullName);
         }
         catch (DirectoryNotFoundException e)
         {
@@ -45,6 +52,4 @@ public class FileHelperService
 
         return files;
     }
-
-
 }

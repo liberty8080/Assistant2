@@ -1,16 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d1d6ef87_002D7ff8_002D4c43_002Da881_002Dda113870fe7b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Tests.Test1&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Tests.TestUpdater&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.DDnsServiceTest.GetIpTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.RocketUpdaterTest.ParseInfoTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.RocketUpdaterTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.V2CheckTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.TempTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.V2UpdaterTest.ParseInfoTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.V2UpdaterTest.TryParseDateTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Service.FileHelperTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d1d6ef87_002D7ff8_002D4c43_002Da881_002Dda113870fe7b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Tests.Test1&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Tests.TestUpdater&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.DDnsServiceTest.GetIpTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.RocketUpdaterTest.ParseInfoTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.RocketUpdaterTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.V2CheckTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.TempTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.V2UpdaterTest.ParseInfoTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.V2UpdaterTest.TryParseDateTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Service.FileHelperTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Songuo/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
