@@ -10,6 +10,7 @@
     &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.MagicTest.TempTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.V2UpdaterTest.ParseInfoTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Magic.V2UpdaterTest.TryParseDateTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::51FDBA5C-3CE0-4A8E-B0CD-BBB64467C3FE::net6.0::TestProject1.Service.FileHelperTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Songuo/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
