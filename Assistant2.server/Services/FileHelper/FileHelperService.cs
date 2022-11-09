@@ -24,11 +24,12 @@ public class FileHelperService
                 continue;
             }
             var rootDir = di.RootDirectory;
-            fileInfos.AddRange(WalkDirectoryTree(rootDir));
+            fileInfos.AddRange(Directory.GetDirectories(rootDir.FullName));
         }
         return fileInfos.ToArray();
     }
     
+    //遍历目录
     public IEnumerable<string> WalkDirectoryTree(DirectoryInfo root)
     {
         var files = new List<string>();

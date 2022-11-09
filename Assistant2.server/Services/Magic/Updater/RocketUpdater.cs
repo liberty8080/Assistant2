@@ -39,7 +39,7 @@ public class RocketUpdater : BaseUpdater
                                      "use named regex: [bandwidth,expire]");
         }
 
-        History.BandwidthLeft = ConvertUtil.AnyToGb(m.Groups["bandwidth"].Value);
+        History.BandwidthLeft = ByteConvertUtil.AnyToGb(m.Groups["bandwidth"].Value);
         History.ExpirationTime = DateTime.Parse(m.Groups["expire"].Value);
     }
 }

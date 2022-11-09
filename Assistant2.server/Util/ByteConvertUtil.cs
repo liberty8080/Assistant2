@@ -1,6 +1,6 @@
 ﻿namespace Assistant2.Util;
 
-public class ConvertUtil
+public static class ByteConvertUtil
 {
     /// <summary>
     /// mb,tb to gb
