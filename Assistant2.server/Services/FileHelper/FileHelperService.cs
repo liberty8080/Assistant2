@@ -24,12 +24,11 @@ public class FileHelperService
                 continue;
             }
             var rootDir = di.RootDirectory;
-            fileInfos.AddRange(Directory.GetDirectories(rootDir.FullName));
+            fileInfos.AddRange(WalkDirectoryTree(rootDir));
         }
         return fileInfos.ToArray();
     }
     
-    //遍历目录
     public IEnumerable<string> WalkDirectoryTree(DirectoryInfo root)
     {
         var files = new List<string>();
@@ -37,6 +36,10 @@ public class FileHelperService
         {
             files.AddRange(Directory.GetFiles(root.FullName));
             files.AddRange(Directory.GetDirectories(root.FullName));
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            _logger.LogWarning(e, "Permission denied! path:{pah}", root.FullName);
         }
         catch (DirectoryNotFoundException e)
         {
