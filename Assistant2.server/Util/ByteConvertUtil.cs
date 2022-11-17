@@ -27,4 +27,32 @@ public static class ByteConvertUtil
 
         throw new Exception("not supported");
     }
+
+    /// <summary>
+    /// byte to string, like xxMB xxGB xxTB
+    /// </summary>
+    /// <param name="data">byte</param>
+    /// <returns></returns>
+    public static string ToString(long data)
+    {
+        //GB
+        if (data.CompareTo(1024 * 1024 * 1024) >= 0)
+        {
+            return $"{(double)data / (1024 * 1024 * 1024):F}GB";
+        }
+
+        //MB
+        if (data.CompareTo(1024 * 1024) >= 0)
+        {
+            return $"{(double)data / (1024 * 1024):F}MB";
+        }
+
+        //KB
+        if (data.CompareTo(1024) >= 0)
+        {
+            return $"{(double)data / 1024:F}KB";
+        }
+
+        return data + "B";
+    }
 }
