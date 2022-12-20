@@ -24,12 +24,12 @@ public class RenameService
     }
 
 
-    public RenameFileInfo Replace(string filePath, string oldStr, string newStr)
+    public FileInfoDto Replace(string filePath, string oldStr, string newStr)
     {
         var d = Path.GetDirectoryName(filePath);
         if (d == null) throw new FileHelperException("filename replace failed,no directory name!");
         var newName = Path.GetFileName(filePath).Replace(oldStr, newStr);
-        return new RenameFileInfo(filePath, newName);
+        return new FileInfoDto(filePath, newName);
     }
 
     /// <summary>
@@ -39,18 +39,18 @@ public class RenameService
     /// <param name="pattern">example: "(.)(01)(.)"</param>
     /// <param name="replacement">example: $1S01E$2$3</param>
     /// <returns>.S01E01.</returns>
-    public RenameFileInfo ReplaceByRegex(string filePath, string pattern, string replacement)
+    public FileInfoDto ReplaceByRegex(string filePath, string pattern, string replacement)
     {
         var newName = Regex.Replace(Path.GetFileName(filePath), pattern, replacement);
-        return new RenameFileInfo(filePath, newName);
+        return new FileInfoDto(filePath, newName);
     }
 
     // 文件名后加字符串
-    public RenameFileInfo AddStrToTail(string filePath, string str)
+    public FileInfoDto AddStrToTail(string filePath, string str)
     {
         var name = Path.GetFileNameWithoutExtension(filePath);
         name += str;
         name += Path.GetExtension(filePath);
-        return new RenameFileInfo(filePath, name);
+        return new FileInfoDto(filePath, name);
     }
 }

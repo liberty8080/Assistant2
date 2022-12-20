@@ -2,10 +2,10 @@
 
 namespace Assistant2.Models;
 
-public class RenameFileInfo
+public class FileInfoDto
 {
 
-    public RenameFileInfo(string filePath,string newName)
+    public FileInfoDto(string filePath,string newName)
     {
         // FullName = fileInfo.FullName;
         FilePath = filePath;
