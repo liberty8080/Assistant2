@@ -27,4 +27,11 @@ public class FileHelperController
     {
         return _fileHelperService.ShowRootFiles();
     }
+
+    [HttpGet("walk")]
+    public IEnumerable<FileInfoDto> Walk(string path)
+    {
+        return _fileHelperService.WalkDirectoryTree(new DirectoryInfo(path));
+    }
+    
 }
