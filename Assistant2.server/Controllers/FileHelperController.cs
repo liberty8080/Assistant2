@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Assistant2.Controllers;
 
 [ApiController]
+[Route("[controller]")]
 public class FileHelperController
 {
     private readonly FileHelperService _fileHelperService;
@@ -21,9 +22,9 @@ public class FileHelperController
         _logger = logger;
     }
 
-    [HttpGet]
+    [HttpGet("root")]
     public IEnumerable<FileInfoDto> ShowRootFiles()
     {
-        throw new NotImplementedException();
+        return _fileHelperService.ShowRootFiles();
     }
 }

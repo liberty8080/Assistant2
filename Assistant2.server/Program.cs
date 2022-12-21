@@ -3,6 +3,7 @@ using Assistant2.Models;
 using Assistant2.Schedule;
 using Assistant2.Services;
 using Assistant2.Services.Announce;
+using Assistant2.Services.FileHelper;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,9 @@ builder.Services.AddDbContext<AssistantDbContext>(
     options => options.UseSqlite("Data Source=assistant.db"));
 builder.Services.AddScoped<IAnnounceService, ChanifyService>();
 builder.Services.AddScoped<ChanifyService>();
+builder.Services.AddScoped<FileHelperService>();
+builder.Services.AddScoped<RenameService>();
+builder.Services.AddScoped<DeleteService>();
 // 定时任务
 builder.Services.AddMagicScheduleJob();
 

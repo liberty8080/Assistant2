@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assistant2.Models;
 
 namespace Assistant2.Services.FileHelper;
 
@@ -11,10 +12,12 @@ public class FileHelperService
         _logger = logger;
     }
   
-    public IEnumerable<string> ShowRootFiles()
+    public IEnumerable<FileInfoDto> ShowRootFiles()
     {
+        
+        //todo: win or linux
         var drives = Environment.GetLogicalDrives();
-        var fileInfos = new List<string>();
+        var fileInfos = new List<FileInfoDto>();
         foreach (var dr in drives)
         {
             var di = new DriveInfo(dr);
@@ -29,13 +32,14 @@ public class FileHelperService
         return fileInfos.ToArray();
     }
     
-    public IEnumerable<string> WalkDirectoryTree(DirectoryInfo root)
+    public IEnumerable<FileInfoDto> WalkDirectoryTree(DirectoryInfo root)
     {
-        var files = new List<string>();
+        var files = new List<FileInfoDto>();
         try
         {
-            files.AddRange(Directory.GetFiles(root.FullName));
-            files.AddRange(Directory.GetDirectories(root.FullName));
+            
+            files.AddRange(Directory.GetFiles(root.FullName).Select(f=>new FileInfoDto(f)));
+            files.AddRange(Directory.GetDirectories(root.FullName).Select(f=>new FileInfoDto(f)));
         }
         catch (UnauthorizedAccessException e)
         {
