@@ -18,7 +18,7 @@ public class FileHelperService
         string[] drives;
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            drives = GetWinDriverList();
+            drives = GetWinDriveList();
         }
         else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
@@ -66,7 +66,7 @@ public class FileHelperService
         return files;
     }
 
-    private string[] GetWinDriverList()
+    private string[] GetWinDriveList()
     {
         return Environment.GetLogicalDrives();
     }
