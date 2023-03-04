@@ -75,6 +75,7 @@ public class FileHelperController
     {
         try
         {
+            _deleteService.ExecuteDelete(filePath);
             return ApiResult.None("delete success");
 
         }

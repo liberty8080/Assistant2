@@ -1,0 +1,4 @@
+- [x] base control of files 
+- [ ] subtitle auto rename
+- [ ] daily recommendations of torrents
+- [ ] react project integration
