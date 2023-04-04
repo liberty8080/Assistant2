@@ -4,6 +4,7 @@ using Assistant2.Schedule;
 using Assistant2.Services;
 using Assistant2.Services.Announce;
 using Assistant2.Services.FileHelper;
+using Assistant2.Services.Magic.Updater;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,9 @@ builder.Services.AddScoped<ChanifyService>();
 builder.Services.AddScoped<FileHelperService>();
 builder.Services.AddScoped<RenameService>();
 builder.Services.AddScoped<DeleteService>();
+builder.Services.AddScoped<IMagicSubUpdater, RocketUpdater>();
+builder.Services.AddScoped<IMagicSubUpdater, V2Updater>();
+builder.Services.AddScoped<MagicSubUpdaterFactory>();
 // 定时任务
 builder.Services.AddMagicScheduleJob();
 

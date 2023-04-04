@@ -8,9 +8,17 @@ public interface IMagicSubUpdater
     public MagicSubHistory SubInfo();
 }
 
-public static class MagicSubUpdaterFactory
+public  class MagicSubUpdaterFactory
 {
-    public static IMagicSubUpdater Updater(MagicSubscribe magic)
+    public IEnumerable<IMagicSubUpdater> Updaters { get; }
+    private readonly ILogger<MagicSubUpdaterFactory> _logger;
+
+    public MagicSubUpdaterFactory(IEnumerable<IMagicSubUpdater> updaters,ILogger<MagicSubUpdaterFactory> logger)
+    {
+        Updaters = updaters;
+        _logger = logger;
+    }
+    public  IMagicSubUpdater Updater(MagicSubscribe magic)
     {
         return magic.Type switch
         {
@@ -18,6 +26,10 @@ public static class MagicSubUpdaterFactory
             MagicSubscribeType.Rocket => new RocketUpdater(magic),
             _ => throw new MagicException("this subscribe type not supported")
         };
+        foreach (var up in Updaters)
+        {
+            
+        }
     }
 
     /*public static IMagicSubUpdater Updater(MagicSubscribe subscribe)
@@ -28,7 +40,8 @@ public static class MagicSubUpdaterFactory
 
 public abstract class BaseUpdater : IMagicSubUpdater
 {
-    protected BaseUpdater(MagicSubscribe subscribe)
+    
+    protected BaseUpdater(MagicSubscribe subscribe,ILogger<BaseUpdater> logger)
     {
         Subscribe = subscribe;
         History = new MagicSubHistory
@@ -36,8 +49,10 @@ public abstract class BaseUpdater : IMagicSubUpdater
             SubId = subscribe.Id,
             UpdateTime = DateTime.Now
         };
+        _logger = logger;
     }
 
+    private readonly ILogger<BaseUpdater> _logger;
     protected MagicSubscribe Subscribe { get; }
     protected MagicSubHistory History { get; }
 
