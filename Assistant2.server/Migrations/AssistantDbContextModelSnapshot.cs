@@ -111,7 +111,7 @@ namespace Assistant2.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnOrder(4);
 
-                    b.Property<DateTime>("ExpirationTime")
+                    b.Property<DateTime?>("ExpirationTime")
                         .HasColumnType("TEXT")
                         .HasColumnOrder(2);
 
