@@ -7,7 +7,8 @@ namespace Assistant2.Services.Magic.Updater;
 
 public class V2Updater : BaseUpdater
 {
-    public V2Updater(MagicSubscribe subscribe) : base(subscribe)
+    public V2Updater(MagicSubscribe subscribe,
+        ILogger<V2Updater> logger) : base(subscribe,logger)
     {
     }
 

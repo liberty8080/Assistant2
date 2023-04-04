@@ -7,7 +7,8 @@ namespace Assistant2.Services.Magic.Updater;
 
 public class RocketUpdater : BaseUpdater
 {
-    public RocketUpdater(MagicSubscribe subscribe) : base(subscribe)
+    public RocketUpdater(MagicSubscribe subscribe,
+        ILogger<RocketUpdater> logger) : base(subscribe,logger)
     {
     }
 

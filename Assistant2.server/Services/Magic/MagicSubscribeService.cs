@@ -8,10 +8,12 @@ namespace Assistant2.Services.Magic;
 public class MagicSubscribeService
 {
     private readonly AssistantDbContext _context;
+    private readonly MagicSubUpdaterFactory _updaterFactory;
 
-    public MagicSubscribeService(AssistantDbContext context)
+    public MagicSubscribeService(AssistantDbContext context,MagicSubUpdaterFactory updaterFactory)
     {
         _context = context;
+        _updaterFactory = updaterFactory;
     }
 
     /// <summary>
@@ -22,7 +24,7 @@ public class MagicSubscribeService
     {
         var sub = _context.MagicSubscribes
             .Single(e => e.Id == id);
-        var updater = MagicSubUpdaterFactory.Updater(sub);
+        var updater = _updaterFactory.Updater(sub);
         var history = updater.SubInfo();
         _context.Add(history);
         _context.SaveChanges();
